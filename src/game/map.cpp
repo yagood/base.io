@@ -9,7 +9,7 @@ namespace map {
 Game* game;
 QuadTree quadTree;
 
-std::vector<std::vector<e_ptr>> entities{
+std::vector<e_vec> entities{
   std::vector<std::shared_ptr<Cell::Entity>>(),
   std::vector<std::shared_ptr<Food::Entity>>()
 };
@@ -83,6 +83,10 @@ void despawn(e_ptr &entity) {
 }
 
 void update() {
+  for (e_ptr &food : entities[EntityType::FOOD]) {
+        if (food->isRemoved) continue;
+        updateObject(food.get());
+    }
   e_vec& pvec = entities[EntityType::CELL];
   for (e_ptr &cell : pvec) {
     if (!cell) {
@@ -99,7 +103,7 @@ void update() {
     cell->update();
 
     for (Collidable *obj : quadTree.getObjectsInBound(cell->obj.bound)) {
-      Entity *e = std::any_cast<Entity*>(obj->data);
+      Entity* e = std::any_cast<Entity*>(obj->data);
       handleCollision(cell, e);
     }
     if (!cell) {

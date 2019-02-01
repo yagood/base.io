@@ -22,7 +22,7 @@ void resolveCollision(e_ptr cell1, e_ptr cell2);
 
 extern Game* game;
 extern QuadTree quadTree;
-extern std::vector<std::vector<e_ptr>> entities;
+extern std::vector<e_vec> entities;
 }
 
 #endif // GAME_MAP_H_

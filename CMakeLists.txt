@@ -30,7 +30,7 @@ include_directories(src)
 include_directories(/usr/local/include)
 
 link_directories(/usr/local/lib)
-link_libraries(uWs uv z ssl)
+link_libraries(uWS uv z ssl)
 
 add_executable(${OUTPUT_ELF} ${SOURCE_FILES})
 

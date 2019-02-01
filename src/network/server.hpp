@@ -14,6 +14,7 @@ struct Server {
   void onClientConnection(uWS::Hub *hub);
   void onClientDisconnection(uWS::Hub *hub);
   void onClientMessage(uWS::Hub *hub);
+  void removeClient(Player* client);
   void end();
 
 private:

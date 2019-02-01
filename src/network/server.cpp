@@ -9,10 +9,10 @@ void Server::start() {
     onClientMessage(&hub);
 
     if (hub.listen(cfg::server_port)) {
-      Logger::warn("Server is listening on port %d\n", cfg::server_port);
+      Logger::info("Server is listening on port :", cfg::server_port);
       hub.run();
     } else {
-      Logger::warn("Server couldn't listen on port %d\n", cfg::server_port);
+      Logger::warn("Server couldn't listen on port :", cfg::server_port);
       end();
     }
   });
@@ -55,6 +55,14 @@ void Server::onClientMessage(uWS::Hub *hub) {
     if (player != nullptr)
       player->packetHandler.onPacket(packet);
   });
+}
+
+void Server::removeClient(Player* client) {
+  auto iter = std::find(clients.begin(), clients.end(), client);
+  if (iter != clients.end()) {
+    std::swap(*iter, clients.back());
+    clients.pop_back();
+  }
 }
 
 void Server::end() {

@@ -44,7 +44,7 @@ Buffer &Packet::updateNodes(const e_vec& add, const e_vec& update, const e_vec& 
     buffer.writeUInt32_LE((unsigned)entity->nodeId());
     buffer.writeInt32_LE((int)entity->pos().x);
     buffer.writeInt32_LE((int)entity->pos().y);
-    buffer.writeInt16_LE((unsigned short)entity->radius());
+    buffer.writeUInt16_LE((unsigned short)entity->radius());
     buffer.writeUInt8(entity->color().r);
     buffer.writeUInt8(entity->color().g);
     buffer.writeUInt8(entity->color().b);

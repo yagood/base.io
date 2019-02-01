@@ -49,13 +49,13 @@ public:
   virtual void onDespawned() { }
   
 protected:
-  Vec2 pos_ { 0, 0 };
-  Vec2 vel_ { 1, 0 };
+  Vec2  pos_   { 0, 0 };
+  Vec2  vel_   { 0, 0 };
   Color color_ { 0, 0, 0 };
-  double mass_ = 0;
+  double mass_   = 0;
   double radius_ = 0;
 
-  uint32_t nodeId_ = 0;
+  uint32_t nodeId_   = 0;
   uint32_t killerId_ = 0;
 
   Player* owner_ = nullptr;

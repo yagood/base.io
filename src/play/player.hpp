@@ -25,9 +25,9 @@ public:
 
   void setDead();
 
-  // get
   const std::string& name() { return name_; };
   const Vec2& mouse() { return mouse_; }
+  const PlayerState& state() { return state_; }
 
   void update();
 

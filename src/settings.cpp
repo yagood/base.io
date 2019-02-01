@@ -18,8 +18,8 @@ json config = {
   { "game", {
     { "mode", 0 },
     { "timeStep", 40 },
-    { "mapWidth", 7142.135623730952 },
-    { "mapHeight", 7142.135623730952 },
+    { "mapWidth", 7142 },
+    { "mapHeight", 7142 },
     { "quadTreeLeafCapacity", 64 },
     { "quadTreeMaxDepth", 32 }
   }},
@@ -27,9 +27,6 @@ json config = {
   { "player", {
     { "viewBoxWidth", 1920 },
     { "viewBoxHeight", 1080 },
-    { "cellRemoveTime", 0 },
-    // 16 frames @30fps = 0.60 seconds
-    // 0.60 / 0.040 = 15 ticks
     { "collisionIgnoreTime", 12 }
   }},
 

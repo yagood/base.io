@@ -99,7 +99,6 @@ void Game::loadConfig() {
 
   cfg::player_viewBoxWidth = config["player"]["viewBoxWidth"];
   cfg::player_viewBoxHeight = config["player"]["viewBoxHeight"];
-  cfg::player_cellRemoveTime = config["player"]["cellRemoveTime"];
   cfg::player_collisionIgnoreTime = config["player"]["collisionIgnoreTime"];
 
   cfg::cell_baseRadius = config["cell"]["baseRadius"];
@@ -135,7 +134,6 @@ double entity_minEatSizeMult;
 
 unsigned int player_viewBoxWidth;
 unsigned int player_viewBoxHeight;
-unsigned long long player_cellRemoveTime;
 unsigned long long player_collisionIgnoreTime;
 
 double cell_baseRadius;

@@ -2,7 +2,7 @@
 
 #include <iostream>  // write, setTextColor, setConsoleColor, start
 #include <mutex>     // write
-#include <string>    // Folder and file names
+#include <cstring>    // Folder and file names
 #include <fstream>   // Log recording
 #ifdef _WIN32
 #include <Windows.h> // Colors for Windows

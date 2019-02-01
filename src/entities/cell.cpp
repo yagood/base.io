@@ -32,6 +32,7 @@ void Cell::update() {
 }
 
 void Cell::onDespawned() {
-  owner_->setDead();
   owner_->cell.reset();
+  if (owner_->state() != PlayerState::DISCONNECTED)
+    owner_->setDead();
 }

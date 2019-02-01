@@ -12,6 +12,8 @@ public:
   Buffer& setBorder();
   Buffer& addNode(unsigned int nodeId);
   Buffer& updateNodes(const e_vec& add, const e_vec& update, const e_vec& eat, const e_vec& del);
+
+private:
   Buffer buffer;
 };
 

@@ -44,7 +44,6 @@ extern unsigned int game_quadTreeMaxDepth;
 
 extern unsigned int player_viewBoxWidth;
 extern unsigned int player_viewBoxHeight;
-extern unsigned long long player_cellRemoveTime;
 extern unsigned long long player_collisionIgnoreTime;
 
 extern double entity_minEatOverlap;

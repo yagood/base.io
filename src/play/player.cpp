@@ -9,6 +9,7 @@ Player::Player(uWS::WebSocket<uWS::SERVER>* _socket) :
 }
 
 Player::~Player() {
+  Logger::debug(this, " ~Player");
 }
 
 void Player::setDead() {
@@ -27,16 +28,15 @@ void Player::update() {
     updateVisibleNodes();
   }
   else if (state_ == PlayerState::DISCONNECTED) {
-    if (cfg::player_cellRemoveTime <= 0 || cell == nullptr) {
-      server->clients.erase(std::find(server->clients.begin(), server->clients.end(), this));
-    } else if (cell != nullptr){
+    if (cell)
       map::despawn(cell);
-    }
+    else
+      server->removeClient(this);
   }
 }
 
 void Player::updateScale() {
-  if (cell == nullptr) return;
+  if (!cell) return;
 
   score_ = cell->mass();
   scale_ = std::pow((float)std::min(64 / cell->radius(), 1.0), 0.4f);
@@ -56,11 +56,13 @@ void Player::updateViewBox() {
 }
 
 void Player::updateVisibleNodes() {
-  std::vector<e_ptr> addNodes, updNodes, eatNodes, delNodes;
+  e_vec addNodes, updNodes, eatNodes, delNodes;
   std::map<unsigned long long, e_ptr> newVisibleNodes;
 
   for (Collidable *obj : map::quadTree.getObjectsInBound(viewBox_)) {
+    if (!obj) continue;
     Entity *entity = std::any_cast<Entity*>(obj->data);
+    if (!entity) continue;
     if (visibleNodes_.find(entity->nodeId()) == visibleNodes_.end())
       addNodes.push_back(entity->shared);
     if (entity->isUpdated)
@@ -112,4 +114,5 @@ void Player::onTarget(const Vec2& pos) {
 
 void Player::onDisconnection() {
   state_ = PlayerState::DISCONNECTED;
+  delete packet;
 }
